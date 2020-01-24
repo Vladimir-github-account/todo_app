@@ -1,9 +1,9 @@
 'use strict';
-import moment from 'moment';
+const moment = require( 'moment' );
 
 /**
  *
- * @param {Array<number>} usersIds
+ * @param {Array<number>} users
  * @return {[]}
  */
 function generateTasks (users) {

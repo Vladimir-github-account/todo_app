@@ -33,7 +33,10 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true
   } );
   Task.associate = function (models) {
-    Task.belongsTo( models.User );
+    Task.belongsTo( models.User, {
+      foreignKey: 'userId',
+      as: 'owner'
+    } );
   };
   return Task;
 };

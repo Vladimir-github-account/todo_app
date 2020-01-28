@@ -1,30 +1,27 @@
-import { Sequelize, User, Task, sequelize } from './db/models';
+import express  from 'express';
+import { User } from './db/models';
 
-const Op = Sequelize.Op;
+const PORT = process.env.PORT || 5000;
 
-async function getAllUsersWithTasks () {
-  try {
+const app = express();
+app.use( express.json() );
 
-    const users = await User.findAll( {
-                                        where: {
-                                          id: {
-                                            [Op.in]: [254, 5, 45, 4, 51, 21, 5, 45, 1]
-                                          }
-                                        },
-                                        include: [
-                                          {
-                                            model: Task,
-                                            as: 'tasks'
-                                          }]
-                                      } );
+app.get( '/', (req, res) => res.send( 'Hello World!' ) );
 
-    return users.map( user => user.toJSON() );
+app.post( '/user', async (req, res, next) => {
+            try {
+              const createdUser = await User.create( req.body );
 
-  } catch (e) {
+              res.send( createdUser );
+            } catch (e) {
+              next( e );
+            }
+          }
+);
 
-  }
-}
+app.use( function (err, req, res, next) {
+  console.error( err.stack );
+  res.status( 500 ).send( 'Something broke!' );
+} );
 
-getAllUsersWithTasks().then(
-  console.log
-).catch( console.error );
+app.listen( PORT, () => console.log( `Example app listening on port ${PORT}!` ) );

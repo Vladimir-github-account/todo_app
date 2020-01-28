@@ -2,7 +2,7 @@ import Joi from '@hapi/joi';
 
 const nameSchema = Joi.string().pattern( /^[A-Z][a-z]{0,63}$/ );
 const loginSchema = Joi.string().pattern( /(?!^\d)^\w{6,16}$/ );
-const passwordSchema = Joi.string().password(
+const passwordSchema = Joi.string().pattern(
   /(?=.*?\d)(?=.*?[a-z])(?=.*?[A-Z])^[a-zA-Z_$%@?!#]{8,60}$/ );
 const emailSchema = Joi.string().email();
 

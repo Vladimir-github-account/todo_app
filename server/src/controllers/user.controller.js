@@ -32,3 +32,38 @@ export async function updateUser (req, res, next) {
     next( e );
   }
 }
+
+export async function getUserByPk (req, res, next) {
+  try {
+
+    const foundUser = await User.findByPk( req.params.userId, {
+      attributes: {
+        exclude: ['password']
+      }
+    } );
+
+    if (foundUser) {
+      return res.send( foundUser );
+    }
+    next( new Error() );
+  } catch (e) {
+    next( e );
+  }
+}
+
+export async function deleteUserByPk (req, res, next) {
+  try {
+    const deletedRowCount = await User.destroy( {
+
+                                                  where: {
+                                                    id: req.params.userId
+                                                  }
+                                                } );
+    if (deletedRowCount) {
+      return res.send( `${deletedRowCount}`);
+    }
+    next( '404 Resource not found' );
+  } catch (e) {
+    next( e );
+  }
+}

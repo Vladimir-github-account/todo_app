@@ -9,7 +9,7 @@ userRouter.post( '/',
                  createUser
 );
 
-userRouter.patch( '/:id',
+userRouter.patch( '/:userId',
                   validateUserDataOnUpdate,
                   updateUser
 );

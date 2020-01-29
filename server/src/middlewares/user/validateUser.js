@@ -1,15 +1,14 @@
-import userSchema  from '../../utils/dataValidations/user.js';
+import userSchema from '../../utils/dataValidations/user.js';
 
 function getUserValidateMW (isCreate = true) {
 
   return async (req, res, next) => {
     try {
-      const { value } = await userSchema.validateAsync( req.body, {
+      req.userValue = await userSchema.validateAsync( req.body, {
         context: {
           isCreate,
         }
       } );
-      req.userValue = value;
       next();
     } catch (e) {
       next( e );

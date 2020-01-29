@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       field: 'passwordHash',
       set (value) {
         this.setDataValue( 'password', bcrypt.hashSync( value, 10 ) );
-      }
+      },
     },
     email: {
       type: DataTypes.STRING,

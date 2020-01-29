@@ -23,7 +23,9 @@ export async function updateUser (req, res, next) {
     } );
 
     if (updatedRowsCount) {
-      return res.send( updatedRows[0] );
+      const data = updatedRows[0].get();
+      delete data.password;
+      return res.send( data );
     }
     next( new Error() );
   } catch (e) {

@@ -12,3 +12,7 @@ export async function createUser (req, res, next) {
     next( e );
   }
 }
+
+export async function updateUser (req, res, next) {
+
+}

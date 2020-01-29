@@ -1,27 +1,32 @@
 'use strict';
+import { LOGIN_PATTERN, PASSWORD_PATTERN, USER_NAME_PATTERN } from '../../constants';
+
 const bcrypt = require( 'bcrypt' );
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define( 'User', {
     firstName: {
       type: DataTypes.STRING( 64 ),
-      is: /[A-Z][a-z]*/,
+      is: USER_NAME_PATTERN,
       allowNull: false
     },
     lastName: {
       type: DataTypes.STRING( 64 ),
-      is: /[A-Z][a-z]*/,
+      is: USER_NAME_PATTERN,
       allowNull: false
     },
     login: {
       type: DataTypes.STRING,
-      is: /^[^ ^()*&?|\\/]{6,16}$/,
+      is: LOGIN_PATTERN,
       allowNull: false,
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       field: 'passwordHash',
+      validate: {
+        is: PASSWORD_PATTERN
+      },
       set (value) {
         this.setDataValue( 'password', bcrypt.hashSync( value, 10 ) );
       }

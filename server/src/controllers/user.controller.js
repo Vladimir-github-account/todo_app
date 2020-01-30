@@ -9,7 +9,7 @@ export async function createUser (req, res, next) {
       delete data.password;
       return res.status( 201 ).send( data );
     }
-
+    next( new AppErrors.BadRequestError() );
   } catch (e) {
     next( e );
   }

@@ -11,7 +11,8 @@ fs
     return (file.indexOf( '.' ) !== 0) && (file !== basename) && (file.slice( -3 ) === '.js');
   } )
   .forEach( async file => {
-    const errorClass = await import (path.join( __dirname, file ));
+    const errorClass = (await import (path.join( __dirname, file ))).default;
+
     errors[errorClass.name] = errorClass;
   } );
 

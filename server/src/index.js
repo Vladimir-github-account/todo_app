@@ -1,9 +1,7 @@
-import express                 from 'express';
-import cors                    from 'cors' ;
-import router                  from './routes';
-import applicationErrorHandler from './middlewares/error_handlers/applicationErrorHandler.js';
-import sequelizeErrorHandler   from './middlewares/error_handlers/sequelizeErrorHandler.js';
-
+import express       from 'express';
+import cors          from 'cors' ;
+import router        from './routes';
+import errorHandlers from './middlewares/error_handlers';
 /*
  * defining server port
  * */
@@ -31,9 +29,9 @@ app.use( router );
 /*
  * error handling
  * */
-
-app.use( applicationErrorHandler );
-app.use( sequelizeErrorHandler );
+app.use( errorHandlers.applicationErrorHandler );
+app.use( errorHandlers.sequelizeErrorHandler );
+app.use( errorHandlers.validationErrorHandler );
 app.use( (err, req, res) => {
   return res.status( 500 ).send( 'Internal server error' );
 } );

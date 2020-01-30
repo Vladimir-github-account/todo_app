@@ -7,22 +7,19 @@ const passwordSchema = Joi.string().pattern( PASSWORD_PATTERN );
 const emailSchema = Joi.string().email();
 
 export default Joi.object( {
-                             firstName: Joi.when( '$isCreate', {
+                             firstName: nameSchema.label( 'First Name' ).when( '$isCreate', {
                                then: nameSchema.required(),
-                               otherwise: nameSchema
                              } ),
-                             lastName: Joi.when( '$isCreate', {
+                             lastName: nameSchema.label( 'Last Name' ).when( '$isCreate', {
                                then: nameSchema.required(),
-                               otherwise: nameSchema
                              } ),
-                             login: Joi.when( '$isCreate', {
+                             login: loginSchema.label( 'Login' ).when( '$isCreate', {
                                then: loginSchema.required(),
-                               otherwise: loginSchema
+
                              } ),
-                             password: Joi.when( '$isCreate', {
+                             password: passwordSchema.label( 'Password' ).when( '$isCreate', {
                                then: passwordSchema.required(),
-                               otherwise: passwordSchema
                              } ),
                              email: emailSchema,
-                           } ).min( 1 ).max( 5 );
+                           } ).min( 1 ).max( 5 ).label( 'User' );
 

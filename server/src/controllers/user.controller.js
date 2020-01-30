@@ -60,7 +60,7 @@ export async function deleteUserByPk (req, res, next) {
                                                   }
                                                 } );
     if (deletedRowCount) {
-      return res.send( `${deletedRowCount}`);
+      return res.send( `${deletedRowCount}` );
     }
     next( '404 Resource not found' );
   } catch (e) {

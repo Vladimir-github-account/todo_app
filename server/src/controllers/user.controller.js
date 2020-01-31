@@ -3,7 +3,10 @@ import AppErrors from '../utils/application_errors';
 
 export async function createUser (req, res, next) {
   try {
-    const createdUser = await User.create( req.userData );
+
+    const { body: userData } = req;
+
+    const createdUser = await User.create( userData );
     if (createdUser) {
       const data = createdUser.get();
       delete data.password;

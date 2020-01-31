@@ -4,7 +4,7 @@ function getUserValidateMW (isCreate = true) {
 
   return async (req, res, next) => {
     try {
-      req.userData = await userSchema.validateAsync( req.body, {
+      req.body = await userSchema.validateAsync( req.body, {
         context: {
           isCreate,
         }

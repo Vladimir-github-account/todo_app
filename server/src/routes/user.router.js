@@ -4,14 +4,9 @@ import { validateUserDataOnCreate, validateUserDataOnUpdate }  from '../middlewa
 
 const userRouter = express.Router();
 
-userRouter.post( '/',
+userRouter.post( '',
                  validateUserDataOnCreate,
-                 createUser,
-                 createUser,
-                 createUser,
-                 createUser,
-                 createUser,
-                 createUser,
+                 createUser
 );
 
 userRouter.get( '/:userId',

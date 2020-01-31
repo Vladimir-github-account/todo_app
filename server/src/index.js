@@ -16,8 +16,9 @@ const app = express();
  * set cors headers
  * */
 app.use( cors() );
+
 /*
- * allows Content-type: application/json
+ * allows "Content-type: application/json"
  * */
 app.use( express.json() );
 

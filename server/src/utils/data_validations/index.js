@@ -1,5 +1,8 @@
-import * as user from './user.js';
+import userSchema from './user.js';
 
 export default {
-  ...user,
+  userSchema,
 };
+
+
+

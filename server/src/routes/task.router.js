@@ -1,4 +1,5 @@
-import express from 'express';
+import express     from 'express';
+import { getTask } from '../controllers/task.controller.js';
 
 const taskRouter = express.Router();
 
@@ -6,7 +7,7 @@ taskRouter.post( '', );
 /*
  * only owner
  * */
-taskRouter.get( '/:taskId', );
+taskRouter.get( '/:taskId', getTask );
 /*
  * only owner
  * */

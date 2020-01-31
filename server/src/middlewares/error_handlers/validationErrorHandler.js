@@ -12,5 +12,5 @@ export default (err, req, res, next) => {
                                    : errorDetails.message );
 
   }
-  next( err );
+  return next( err );
 }

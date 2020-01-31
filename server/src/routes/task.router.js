@@ -1,9 +1,9 @@
-import express     from 'express';
-import { getTask } from '../controllers/task.controller.js';
+import express                                         from 'express';
+import { createTask, deleteTask, getTask, updateTask } from '../controllers/task.controller.js';
 
 const taskRouter = express.Router();
 
-taskRouter.post( '', );
+taskRouter.post( '', createTask );
 /*
  * only owner
  * */
@@ -11,11 +11,11 @@ taskRouter.get( '/:taskId', getTask );
 /*
  * only owner
  * */
-taskRouter.patch( '/:taskId', );
+taskRouter.patch( '/:taskId', updateTask );
 /*
  * only owner
  * */
-taskRouter.delete( '/:taskId', );
+taskRouter.delete( '/:taskId', deleteTask );
 
 export default taskRouter;
 

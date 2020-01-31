@@ -29,7 +29,7 @@ export async function updateUser (req, res, next) {
       delete data.password;
       return res.send( data );
     }
-    next( new AppErrors.ResourceNotFoundError( 'User' ) );
+    next( new AppErrors.NotFoundError( 'User' ) );
   } catch (e) {
     next( e );
   }
@@ -47,7 +47,7 @@ export async function getUserByPk (req, res, next) {
     if (foundUser) {
       return res.send( foundUser );
     }
-    next( new AppErrors.ResourceNotFoundError( 'User' ) );
+    next( new AppErrors.NotFoundError( 'User' ) );
   } catch (e) {
     next( e );
   }
@@ -64,7 +64,7 @@ export async function deleteUserByPk (req, res, next) {
     if (deletedRowCount) {
       return res.send( `${deletedRowCount}` );
     }
-    next( new AppErrors.ResourceNotFoundError( 'User' ) );
+    next( new AppErrors.NotFoundError( 'User' ) );
   } catch (e) {
     next( e );
   }

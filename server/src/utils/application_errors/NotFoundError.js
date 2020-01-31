@@ -1,6 +1,6 @@
 import ApplicationError from './ApplicationError.js';
 
-class ResourceNotFoundError extends ApplicationError {
+class NotFoundError extends ApplicationError {
   constructor (resourceName) {
     super( `Resouce ${
       resourceName
@@ -10,4 +10,4 @@ class ResourceNotFoundError extends ApplicationError {
   }
 }
 
-export default ResourceNotFoundError;
+export default NotFoundError;

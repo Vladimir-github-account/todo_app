@@ -2,8 +2,14 @@ import AppError from '../../utils/application_errors';
 
 export default function (req, res, next) {
   try {
-    req.authorizeData = req.get( 'Authorization' );
-    if (req.authorizeData) {
+
+    const actorId = req.get( 'Authorization' );
+
+    if (actorId) {
+
+      req.authorizationData = {
+        id: actorId,
+      };
       next();
     } else {
       next( new AppError.UnauthorizedError() );

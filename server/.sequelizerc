@@ -5,7 +5,7 @@ const commonPath = path.resolve( 'src', 'db' );
 
 module.exports = {
   'config': path.resolve( commonPath, 'config', 'config.js' ),
-  'models-path': path.resolve( commonPath, 'models' ),
+  'models-path': path.resolve( 'src', 'models' ),
   'seeders-path': path.resolve( commonPath, 'seeders' ),
   'migrations-path': path.resolve( commonPath, 'migrations' )
 };

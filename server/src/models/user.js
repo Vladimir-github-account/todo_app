@@ -1,5 +1,5 @@
 'use strict';
-import { LOGIN_PATTERN, PASSWORD_PATTERN, USER_NAME_PATTERN } from '../../constants';
+import { LOGIN_PATTERN, PASSWORD_PATTERN, USER_NAME_PATTERN } from '../constants';
 
 const bcrypt = require( 'bcrypt' );
 

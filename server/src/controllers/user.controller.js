@@ -1,4 +1,4 @@
-import { User }  from './../db/models';
+import { User }  from '../models';
 import AppErrors from '../utils/application_errors';
 
 export async function createUser (req, res, next) {

@@ -1,16 +1,12 @@
-import { ACTIONS }    from '../../constants';
+import { ACTIONS } from '../../constants';
 
 /**
  *
  * @param validationSchema
- * @return {function(action: Action): function(req, res, next):undefined}
+ * @return {function(*=): function(...[*]=)}
  */
 export default function (validationSchema) {
 
-  /**
-   * @param {Action} action
-   * @return {function(req, res, next):void}
-   */
   return (action = ACTIONS.CREATE) => {
     return async (req, res, next) => {
       try {

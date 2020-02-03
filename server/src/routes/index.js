@@ -1,6 +1,6 @@
 import express                from 'express';
 import userRouter             from './user.router.js';
-import checkUserAuthorization from '../middlewares/authorization/checkUserAuthorization.js';
+import checkUserAuthorization from '../middlewares/authorizations/checkUserAuthorization.js';
 import taskRouter             from './task.router.js';
 
 const router = express.Router();

@@ -1,8 +1,10 @@
 'use strict';
+import { ROLES } from '../constants';
+
 module.exports = (sequelize, DataTypes) => {
   const Role = sequelize.define( 'Role', {
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM( ...Object.values( ROLES ) ),
       allowNull: true,
       unique: true,
     }

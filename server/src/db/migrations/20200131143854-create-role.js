@@ -1,4 +1,7 @@
 'use strict';
+
+import { ROLES } from '../../constants';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable( 'Roles', {
@@ -9,7 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM( ...Object.values( ROLES ) ),
         unique: true,
         allowNull: false,
       },

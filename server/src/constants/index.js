@@ -54,7 +54,7 @@ export const ROLES = Object.freeze( {
  * @enum {Entity} Entities
  */
 export const ENTITIES = Object.freeze( {
+                                         ...ROLES,
                                          TASK: 'TASK',
-                                         USER: 'USER',
                                        } );
 

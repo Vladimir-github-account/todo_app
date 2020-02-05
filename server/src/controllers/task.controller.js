@@ -74,3 +74,35 @@ export async function deleteTask (req, res, next) {
     next( e );
   }
 }
+
+export async function getTasks (req, res, next) {
+  try {
+    /*
+     *
+     * IT MUST NOT BE HERE
+     * */
+    const {
+      authorizationData: {
+        id: userId,
+      },
+      query: {
+        isDone,
+        limit,
+        offset,
+      }
+    } = req;
+
+    const tasks = await Task.findAll( {
+                                        limit,
+                                        offset,
+                                        where: {
+                                          userId,
+                                          isDone,
+                                        }
+                                      } );
+    res.send( tasks );
+  } catch (e) {
+    next( e );
+  }
+}
+

@@ -77,10 +77,6 @@ export async function deleteTask (req, res, next) {
 
 export async function getTasks (req, res, next) {
   try {
-    /*
-     *
-     * IT MUST NOT BE HERE
-     * */
     const {
       authorizationData: {
         id: userId,
@@ -105,4 +101,36 @@ export async function getTasks (req, res, next) {
     next( e );
   }
 }
+const { Op } = require("sequelize");
+export async function deleteTasks (req, res, next) {
+  try {
+    const {
+      authorizationData: {
+        id: userId,
+      },
+      query: {
+        isDone,
+        ids
+      }
+    } = req;
+    const deletedRowsCount = await Task.destroy( {
+                                                   where: {
+                                                       userId,
+                                                       isDone,
+                                                     id: ids.split(',')
+                                                   }
+                                                 } );
+    if (deletedRowsCount) {
+      return res.send( {
+                         deletedRowsCount,
+                       } );
+    }
+    next( new AppError.NotFoundError( 'Task' ) );
+
+  } catch (e) {
+    next( e );
+  }
+}
+
+
 

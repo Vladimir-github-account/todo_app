@@ -1,9 +1,10 @@
 import express      from 'express';
-import { getTasks } from '../controllers/task.controller.js';
+import { getTasks, deleteTasks } from '../controllers/task.controller.js';
 
 const tasksRouter = express.Router();
 
 tasksRouter.get( '', getTasks );
+tasksRouter.delete( '', deleteTasks );
 
 export default tasksRouter;
 

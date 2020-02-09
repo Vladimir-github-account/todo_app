@@ -15,19 +15,19 @@ export const ACTIONS = Object.freeze( {
                                         /**
                                          * @readonly
                                          */
-                                        CREATE: Symbol( 'CREATE' ),
+                                        CREATE:'CREATE' ,
                                         /**
                                          * @readonly
                                          */
-                                        READ: Symbol( 'READ' ),
+                                        READ:'READ' ,
                                         /**
                                          * @readonly
                                          */
-                                        UPDATE: Symbol( 'UPDATE' ),
+                                        UPDATE:  'UPDATE' ,
                                         /**
                                          * @readonly
                                          */
-                                        DELETE: Symbol( 'DELETE' ),
+                                        DELETE: 'DELETE' ,
                                       } );
 
 /**
